@@ -6,8 +6,8 @@ import org.firstinspires.ftc.teamcode.generic_classes.OpRobotSystemsFramework;
 
 
 @Autonomous
-public class DcMotorTest extends OpRobotSystemsFramework {
-    double SPEED = 0.3;
+public class ShooterTest extends OpRobotSystemsFramework {
+    double k_speed = 0.3;
 
     @Override
     public void runOpMode() {
@@ -20,8 +20,8 @@ public class DcMotorTest extends OpRobotSystemsFramework {
 
             telemetryMotors();
 
-            shoot_L.setPower(SPEED);
-            shoot_R.setPower(SPEED);
+            shoot_L.setPower(k_speed * gamepad1.left_stick_x);
+            shoot_R.setPower(k_speed * gamepad1.left_stick_x);
 
             sleep(20);
         }
