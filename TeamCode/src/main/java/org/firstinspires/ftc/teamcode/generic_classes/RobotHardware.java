@@ -293,25 +293,15 @@ public class RobotHardware{
         public class NameKeys {
             // Class for easy renaming purposes
             public class servoNameKeys {
-                public final static String spindexer = "spndx";
-                public final static String front_ejector = "front_ejector";
-                public final static String back_ejector = "back_ejector";
-                public final static String front_wall = "front_wall";
-                public final static String back_wall = "back_wall";
-                public final static String turret_x = "turret_x";
-                public final static String turret_y = "turret_y";
-                public final static String brake_pad = "brake_pad";
-                public final static String barabim1 = "barabim1";
-                public final static String barabim2 = "barabim2";
+                public final static String pos_test_servo_1 = "pos_test_servo_1";
+                public final static String cr_test_servo_1 = "cr_test_servo_1";
 
             }
             public class SparkMiniNameKeys{
             }
             public class motorDCNameKeys {
-                public final static String front_intake = "Front_intake";
-                public final static String back_intake = "Back_intake";
-                public final static String shooter_left = "shooter_left";
-                public final static String shooter_right = "shooter_right";
+                public final static String shoot_R = "shoot_R";
+                public final static String shoot_L = "shoot_L";
             }
         }
 
@@ -319,38 +309,14 @@ public class RobotHardware{
 
         public Motors(){
             // Add motors HERE
-            servos.put(NameKeys.servoNameKeys.spindexer,new InternalServo("SP", "SP_POS"));
-            servos.put(NameKeys.servoNameKeys.front_ejector,new InternalServo("Fej"));
-            servos.put(NameKeys.servoNameKeys.back_ejector,new InternalServo("Bej"));
-            servos.put(NameKeys.servoNameKeys.front_wall,new InternalServo("Fwall"));
-            servos.put(NameKeys.servoNameKeys.back_wall,new InternalServo("Bwall"));
-            servos.put(NameKeys.servoNameKeys.turret_x,new InternalServo("servoX"));
-            servos.put(NameKeys.servoNameKeys.turret_y,new InternalServo("servoY"));
-            servos.put(NameKeys.servoNameKeys.brake_pad,new InternalServo("BRK"));
-
-            servos.put(NameKeys.servoNameKeys.barabim1,new InternalServo("barabim1"));
-            servos.put(NameKeys.servoNameKeys.barabim2,new InternalServo("barabim2"));
+//            servos.put(NameKeys.servoNameKeys.spindexer,new InternalServo("SP", "SP_POS"));
+            servos.put(NameKeys.servoNameKeys.pos_test_servo_1,new InternalServo("pos_test_servo_1"));
+            servos.put(NameKeys.servoNameKeys.cr_test_servo_1,new InternalServo("cr_test_servo_1"));
 
 
+            motorsDC.put(NameKeys.motorDCNameKeys.shoot_R,new InternalMotorDC("shoot_R"));
+            motorsDC.put(NameKeys.motorDCNameKeys.shoot_L,new InternalMotorDC("shoot_L"));
 
-            motorsDC.put(NameKeys.motorDCNameKeys.front_intake,new InternalMotorDC("Fin"));
-            motorsDC.put(NameKeys.motorDCNameKeys.back_intake,new InternalMotorDC("Bin"));
-            motorsDC.put(NameKeys.motorDCNameKeys.shooter_left,new InternalMotorDC("shooterLeft"));
-            motorsDC.put(NameKeys.motorDCNameKeys.shooter_right,new InternalMotorDC("shooterRight"));
-
-            //Old preserved because there is a lot of use in programs
-//            servos.put("eeaeaea",new InternalServo("sbkr"));
-//            servos.put(NameKeys.servoNameKeys.container_grab_module.leftServo,new InternalServo("grabl"));
-//            servos.put(NameKeys.servoNameKeys.container_grab_module.rightServo,new InternalServo("grabr"));
-//
-//            servos.put(NameKeys.servoNameKeys.fork_module.fork_right,new InternalServo("vilar"));
-//            servos.put(NameKeys.servoNameKeys.fork_module.fork_left,new InternalServo("vilal"));
-//
-//            servos.put(NameKeys.servoNameKeys.factory_lift,new InternalServo("reika",true, true));
-//
-
-//            motorsDC.put(NameKeys.motorDCNameKeys.extention_left,new InternalMotorDC("extl",-1));
-//            motorsDC.put(NameKeys.motorDCNameKeys.factory_extention,new InternalMotorDC("zavoz",-1));
         }
         public List<String> getMotorsConfigNames(){
             List<String> output = new ArrayList<>();
@@ -723,8 +689,7 @@ public class RobotHardware{
                 public final static String ch1 = "ch1";
             }
             public class colorNameKeys {
-                public final static String cv0 = "cv0";
-                public final static String cv1 = "cv1";
+                public final static String color_sensor_test_1 = "color_sensor_test_1";
             }
         }
 
@@ -734,8 +699,8 @@ public class RobotHardware{
             // Add motors HERE
             channels.put(NameKeys.channelsNameKeys.ch0,new InternalChannel("ch0"));
             channels.put(NameKeys.channelsNameKeys.ch1,new InternalChannel("ch1"));
-            color_sensors.put(NameKeys.colorNameKeys.cv0,new InternalColor("cv0",100));
-            color_sensors.put(NameKeys.colorNameKeys.cv1,new InternalColor("cv1"));
+            color_sensors.put(NameKeys.colorNameKeys.color_sensor_test_1,new InternalColor("cv0",100));
+//            color_sensors.put(NameKeys.colorNameKeys.cv1,new InternalColor("cv1"));
         }
 
         public List<String> getSensorsConfigNames(){

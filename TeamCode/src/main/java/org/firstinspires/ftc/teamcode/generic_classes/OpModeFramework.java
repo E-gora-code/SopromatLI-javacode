@@ -1,25 +1,33 @@
 package org.firstinspires.ftc.teamcode.generic_classes;
 
 
-import com.acmerobotics.dashboard.FtcDashboard;
+//import com.acmerobotics.dashboard.FtcDashboard;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 
 public abstract class OpModeFramework extends LinearOpMode {
-    protected Telemetry dash;
+//    protected Telemetry dash;
 
 
     protected RobotHardware.DriveBase.motor_classes.FrontLeft FL;
     protected RobotHardware.DriveBase.motor_classes.FrontRight FR;
     protected RobotHardware.DriveBase.motor_classes.BackLeft BL;
     protected RobotHardware.DriveBase.motor_classes.BackRight BR;
-    protected RobotHardware.Motors.BasicServo front_ejector,back_ejector,front_wall,back_wall,turret_y,brake_pad;
-    protected RobotHardware.Motors.BasicCRServo spindexer,turret_x, barabim1, barabim2;
-    protected RobotHardware.Motors.DCMotor extr, extl,factory_ext;
+    protected RobotHardware.Motors.BasicServo pos_test_servo_1;
+    protected RobotHardware.Motors.BasicCRServo cr_test_servo_1;
+    protected RobotHardware.Motors.DCMotor shoot_R, shoot_L;
 
-    protected RobotHardware.Motors.DCMotor front_intake, back_intake,shooter_left,shooter_right;
+
+
+    protected RobotHardware.Sensors.BasicChannel ch0, ch1;
+    protected RobotHardware.Sensors.BasicColorSensor color_sensor_test_1;
+
+
+
+
+
     protected RobotHardware robotHardware;
     protected GamepadDriver controllerDriver_1;
     protected GamepadDriver controllerDriver_2;
@@ -29,8 +37,7 @@ public abstract class OpModeFramework extends LinearOpMode {
     protected RobotHardware.GyroIMU gyro;
     protected RobotHardware.DriveBase.motor_classes motor_classes;
 
-    protected RobotHardware.Sensors.BasicChannel ch0, ch1;
-    protected RobotHardware.Sensors.BasicColorSensor cv0, cv1;
+
 
     public void selfInit(){
         //Error processing settings
@@ -48,39 +55,31 @@ public abstract class OpModeFramework extends LinearOpMode {
         BL = motor_classes.new BackLeft(driveBase);
         BR = motor_classes.new BackRight(driveBase);
 
-        dash = FtcDashboard.getInstance().getTelemetry();
+//        dash = FtcDashboard.getInstance().getTelemetry();
 
         motors = robotHardware.new Motors();
         sensors = robotHardware.new Sensors();
 
-        spindexer = motors.new BasicCRServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.spindexer);
-        turret_x = motors.new BasicCRServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.turret_x);
-
-
-        barabim1 = motors.new BasicCRServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.barabim1);
-        barabim2 = motors.new BasicCRServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.barabim2);
 
 
 
 
-        front_ejector = motors.new BasicServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.front_ejector);
-        back_ejector = motors.new BasicServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.back_ejector);
-        front_wall = motors.new BasicServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.front_wall);
-        back_wall = motors.new BasicServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.back_wall);
-                turret_y = motors.new BasicServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.turret_y);
-        brake_pad = motors.new BasicServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.brake_pad);
+        pos_test_servo_1 = motors.new BasicServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.pos_test_servo_1);
 
-        front_intake = motors.new DCMotor(motors, RobotHardware.Motors.NameKeys.motorDCNameKeys.front_intake);
-        back_intake = motors.new DCMotor(motors, RobotHardware.Motors.NameKeys.motorDCNameKeys.back_intake);
-        shooter_right = motors.new DCMotor(motors, RobotHardware.Motors.NameKeys.motorDCNameKeys.shooter_right);
-        shooter_left = motors.new DCMotor(motors, RobotHardware.Motors.NameKeys.motorDCNameKeys.shooter_left);
+        cr_test_servo_1 = motors.new BasicCRServo(motors, RobotHardware.Motors.NameKeys.servoNameKeys.cr_test_servo_1);
+
+
+
+        shoot_R = motors.new DCMotor(motors, RobotHardware.Motors.NameKeys.motorDCNameKeys.shoot_R);
+        shoot_L = motors.new DCMotor(motors, RobotHardware.Motors.NameKeys.motorDCNameKeys.shoot_L);
 
 
 
         ch0 = sensors.new BasicChannel(sensors, RobotHardware.Sensors.NameKeys.channelsNameKeys.ch0);
         ch1 = sensors.new BasicChannel(sensors, RobotHardware.Sensors.NameKeys.channelsNameKeys.ch1);
-        cv0 = sensors.new BasicColorSensor(sensors, RobotHardware.Sensors.NameKeys.colorNameKeys.cv0);
-        cv1 = sensors.new BasicColorSensor(sensors, RobotHardware.Sensors.NameKeys.colorNameKeys.cv1);
+
+
+        color_sensor_test_1 = sensors.new BasicColorSensor(sensors, RobotHardware.Sensors.NameKeys.colorNameKeys.color_sensor_test_1);
 
     }
 
@@ -99,11 +98,11 @@ public abstract class OpModeFramework extends LinearOpMode {
     }
     public void printTelemetry(String caption, Object value){
         telemetry.addData(caption,value);
-        dash.addData(caption,value);
+//        dash.addData(caption,value);
     }
     public void UpdatePrint(){
         telemetry.update();
-        dash.update();
+//        dash.update();
     }
 
     @Override
